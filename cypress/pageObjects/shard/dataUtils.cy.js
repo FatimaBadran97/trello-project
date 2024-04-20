@@ -26,6 +26,13 @@ class ShardDataUtils {
       `https://api.trello.com/1/cards?name=${cardName}&idList=${listId}&key=${APIKey}&token=${APIToken}`
     );
   };
+
+  createCardTemplate = (listId, templateName) => {
+    return cy.request(
+      'POST',
+      `https://api.trello.com/1/cards?name=${templateName}&idList=${listId}&isTemplate=true&key=${APIKey}&token=${APIToken}`
+    );
+  };
 }
 
 export default ShardDataUtils;
