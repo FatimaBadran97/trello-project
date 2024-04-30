@@ -1,8 +1,10 @@
+import SharedAssertions from '../shared/assertions.cy';
+
+const sharedAssertions = new SharedAssertions();
+
 class MoveTemplateAssertions {
   checkOriginalList(originalListId, templateId) {
-    cy.get(`[data-list-id = ${originalListId}]`)
-      .find(templateId)
-      .should('not.exist');
+    sharedAssertions.checkCardOrTemplateAbsence(originalListId, templateId);
     return this;
   }
 

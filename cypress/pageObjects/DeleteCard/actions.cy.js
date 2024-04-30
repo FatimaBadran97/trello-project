@@ -1,9 +1,4 @@
 class DeleteCardActions {
-  openBoard(url) {
-    cy.visit(url);
-    return this;
-  }
-
   clickOnCardName(cardName) {
     cy.contains(cardName).click();
     return this;

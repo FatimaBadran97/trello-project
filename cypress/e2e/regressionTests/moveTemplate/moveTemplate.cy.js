@@ -1,12 +1,14 @@
 ///<reference types="cypress"/>
 import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
-import ShardDataUtils from '../../../pageObjects/shard/dataUtils.cy';
+import ShardDataUtils from '../../../pageObjects/shared/dataUtils.cy';
 import MoveTemplateActions from '../../../pageObjects/moveTemplate/actions.cy';
 import MoveTemplateAssertions from '../../../pageObjects/moveTemplate/assertions.cy';
+import SharedActions from '../../../pageObjects/shared/actions.cy';
 
 const shardDataUtils = new ShardDataUtils();
 const moveTemplateAction = new MoveTemplateActions();
 const moveTemplateAssertion = new MoveTemplateAssertions();
+const sharedAction = new SharedActions();
 
 const boardName = 'My Board';
 const listName = 'My List';
@@ -35,7 +37,7 @@ before(() => {
 });
 
 Given('The user navigates to the board', () => {
-  moveTemplateAction.openBoard(boardUrl);
+  sharedAction.openBoard(boardUrl);
 });
 When('Right clicks on template title', () => {
   cy.wait(1500);

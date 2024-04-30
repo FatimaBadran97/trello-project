@@ -11,4 +11,5 @@ module.exports = defineConfig({
     },
     baseUrl: 'https://trello.com/',
   },
+  screenshotsFolder: 'MyScreens',
 });

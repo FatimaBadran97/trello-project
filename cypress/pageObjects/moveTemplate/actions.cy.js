@@ -1,9 +1,4 @@
 class MoveTemplateActions {
-  openBoard(url) {
-    cy.visit(url);
-    return this;
-  }
-
   rightClicksOnTemplateTitle() {
     cy.findByTestId('card-name').rightclick();
     return this;

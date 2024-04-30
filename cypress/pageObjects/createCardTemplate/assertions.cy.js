@@ -1,3 +1,9 @@
+import SharedActions from '../shared/actions.cy';
+import SharedAssertions from '../shared/assertions.cy';
+
+const sharedActions = new SharedActions();
+const sharedAssertions = new SharedAssertions();
+
 class CreateCardTemplateAssertions {
   checkPopUpTitle() {
     cy.wait(3000);
@@ -5,7 +11,7 @@ class CreateCardTemplateAssertions {
     return this;
   }
   checkTemplateTitleInPopUp(templateName) {
-    cy.get('.js-card-detail-title-input').should('have.value', templateName);
+    sharedAssertions.checkCardOrTemplateTitleInModule(templateName);
     return this;
   }
   checkTemplateLinkHaveGreenCheckInPopUp() {
@@ -15,7 +21,7 @@ class CreateCardTemplateAssertions {
     return this;
   }
   checkTemplateBadgeInCard() {
-    cy.findByTestId('CloseIcon').first().click();
+    sharedActions.closeCardModule();
     cy.findByTestId('badge-card-template').should(
       'contain',
       'This card is a template.'

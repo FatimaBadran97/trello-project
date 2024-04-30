@@ -1,10 +1,16 @@
+import SharedActions from '../shared/actions.cy';
+import SharedAssertions from '../shared/assertions.cy';
+
+const sharedActions = new SharedActions();
+const sharedAssertions = new SharedAssertions();
+
 class UpdateTemplateNameAssertions {
   checkUpdatedNameInPopUP(updatedName) {
-    cy.get('.js-card-detail-title-input').should('have.value', updatedName);
+    sharedAssertions.checkCardOrTemplateTitleInModule(updatedName);
     return this;
   }
   checkUpdatedNameInList(updatedName) {
-    cy.findByTestId('CloseIcon').first().click();
+    sharedActions.closeCardModule();
     cy.findByTestId('card-name').should('contain', updatedName);
     return this;
   }

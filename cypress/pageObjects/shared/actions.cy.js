@@ -4,7 +4,7 @@ import CreateListActions from '../createList/actions.cy';
 const createBoardActions = new CreateBoardActions();
 const createListActions = new CreateListActions();
 
-class SherdActions {
+class SharedActions {
   createBoard(boardName) {
     createBoardActions.clickOnCreateBtnInNavbar();
     createBoardActions.chooseCreateBoardOption();
@@ -23,6 +23,14 @@ class SherdActions {
     cy.findByTestId('close-board-delete-board-button').click();
     cy.findByTestId('close-board-delete-board-confirm-button').click();
   }
+
+  openBoard(url) {
+    cy.visit(url);
+    return this;
+  }
+  closeCardModule() {
+    cy.findByTestId('CloseIcon').first().click();
+  }
 }
 
-export default SherdActions;
+export default SharedActions;

@@ -1,6 +1,10 @@
+import SharedAssertions from '../shared/assertions.cy';
+
+const sharedAssertions = new SharedAssertions();
+
 class HideTemplateAssertions {
   checkTemplateInList(listId, templateId) {
-    cy.get(`[data-list-id = ${listId}]`).find(templateId).should('not.exist');
+    sharedAssertions.checkCardOrTemplateAbsence(listId, templateId);
     return this;
   }
 }

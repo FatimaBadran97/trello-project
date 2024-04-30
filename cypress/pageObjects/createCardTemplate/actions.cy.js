@@ -1,8 +1,4 @@
 class CreateCardTemplateActions {
-  openBoard(url) {
-    cy.visit(url);
-    return this;
-  }
   clicksOnCreateTemplateIconButton() {
     cy.findByTestId('card-template-list-button').first().click();
     return this;
@@ -13,6 +9,7 @@ class CreateCardTemplateActions {
   }
   typesTemplateTitleInTextareaField(templateName) {
     cy.findByTestId('create-template-card-composer').type(templateName);
+    cy.wait(1200);
     return this;
   }
   clicksOnAddButton() {

@@ -1,10 +1,10 @@
 ///<reference types="cypress"/>
 import { Given, When, Then, Before } from 'cypress-cucumber-preprocessor/steps';
-import SherdActions from '../../../pageObjects/shard/actions.cy';
+import SharedActions from '../../../pageObjects/shared/actions.cy';
 import CreateListActions from '../../../pageObjects/createList/actions.cy';
 import CreateListAssertions from '../../../pageObjects/createList/assertions.cy';
 
-const sherdActions = new SherdActions();
+const sharedAction = new SharedActions();
 const boardName = 'My First Board';
 const createListActions = new CreateListActions();
 const listName = 'List 1';
@@ -12,7 +12,7 @@ const createListAssertions = new CreateListAssertions();
 
 before(() => {
   cy.login();
-  sherdActions.createBoard(boardName);
+  sharedAction.createBoard(boardName);
 });
 
 When('The user types list title in Enter List Title textarea field', () => {
@@ -27,5 +27,5 @@ Then('The list will be created successfully.', () => {
 });
 
 after(() => {
-  sherdActions.deleteCurrentBoard();
+  sharedAction.deleteCurrentBoard();
 });

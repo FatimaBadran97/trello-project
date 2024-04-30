@@ -1,8 +1,4 @@
 class UpdateTemplateNameActions {
-  openBoard(url) {
-    cy.visit(url);
-    return this;
-  }
   clicksOnTemplateTitle() {
     cy.findByTestId('card-name').click();
     return this;

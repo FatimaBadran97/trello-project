@@ -1,12 +1,14 @@
 ///<reference types="cypress"/>
 import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
-import ShardDataUtils from '../../../pageObjects/shard/dataUtils.cy';
+import ShardDataUtils from '../../../pageObjects/shared/dataUtils.cy';
 import CreateCardTemplateActions from '../../../pageObjects/createCardTemplate/actions.cy';
 import CreateCardTemplateAssertions from '../../../pageObjects/createCardTemplate/assertions.cy';
+import SharedActions from '../../../pageObjects/shared/actions.cy';
 
 const dataUtils = new ShardDataUtils();
 const createCardTemplateAction = new CreateCardTemplateActions();
 const createCardTemplateAssertion = new CreateCardTemplateAssertions();
+const sharedAction = new SharedActions();
 
 const boardName = 'My Board';
 const templateName = 'My Template';
@@ -22,7 +24,7 @@ before(() => {
 });
 
 Given('The user navigates to the board', () => {
-  createCardTemplateAction.openBoard(boardUrl);
+  sharedAction.openBoard(boardUrl);
 });
 When('Clicks on create template icon button', () => {
   createCardTemplateAction.clicksOnCreateTemplateIconButton();

@@ -1,6 +1,6 @@
 ///<reference types="cypress"/>
 import { Given, When, Then, Before } from 'cypress-cucumber-preprocessor/steps';
-import SherdActions from '../../../pageObjects/shard/actions.cy';
+import SherdActions from '../../../pageObjects/shared/actions.cy';
 import DeleteListActions from '../../../pageObjects/deleteList/actions.cy';
 import DeleteListAssertions from '../../../pageObjects/deleteList/assertions.cy';
 

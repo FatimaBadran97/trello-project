@@ -1,7 +1,7 @@
 ///<reference types="cypress"/>
 import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
 import CreateCardActions from '../../../pageObjects/createCard/actions.cy';
-import ShardDataUtils from '../../../pageObjects/shard/dataUtils.cy';
+import ShardDataUtils from '../../../pageObjects/shared/dataUtils.cy';
 
 const createCardAction = new CreateCardActions();
 const shardDataUtils = new ShardDataUtils();

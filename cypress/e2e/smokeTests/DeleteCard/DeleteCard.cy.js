@@ -1,12 +1,14 @@
 ///<reference types="cypress"/>
 import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
-import ShardDataUtils from '../../../pageObjects/shard/dataUtils.cy';
+import ShardDataUtils from '../../../pageObjects/shared/dataUtils.cy';
 import DeleteCardActions from '../../../pageObjects/DeleteCard/actions.cy';
 import DeleteCardAssertions from '../../../pageObjects/DeleteCard/assertions.cy';
+import SharedActions from '../../../pageObjects/shared/actions.cy';
 
 const dataUtils = new ShardDataUtils();
 const deleteCardAction = new DeleteCardActions();
 const deleteCardAssertion = new DeleteCardAssertions();
+const sharedAction = new SharedActions();
 const boardName = 'My Board';
 const listName = 'My List';
 const cardName = 'My card';
@@ -28,7 +30,8 @@ before(() => {
 });
 
 Given('The user navigates to the board', () => {
-  deleteCardAction.openBoard(boardUrl);
+  sharedAction.openBoard(boardUrl);
+  cy.screenshot({ capture: 'fullPage' });
 });
 When('Clicks on card name', () => {
   deleteCardAction.clickOnCardName(cardName);

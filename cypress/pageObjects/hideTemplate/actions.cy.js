@@ -1,9 +1,8 @@
-class HideTemplateActions {
-  openBoard(url) {
-    cy.visit(url);
-    return this;
-  }
+import SharedActions from '../shared/actions.cy';
 
+const sharedActions = new SharedActions();
+
+class HideTemplateActions {
   clicksOnTemplateName() {
     cy.findByTestId('card-name').click();
     return this;
@@ -11,7 +10,7 @@ class HideTemplateActions {
 
   clicksOnHideFromListLink() {
     cy.contains('Hide from list').click();
-    cy.findByTestId('CloseIcon').first().click();
+    sharedActions.closeCardModule();
   }
 }
 
