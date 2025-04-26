@@ -5,8 +5,25 @@ class DeleteListActions {
     return this;
   }
   chooseArchiveThisListOption() {
-    cy.get('.js-close-list').click();
+    cy.findByTestId('list-actions-archive-list-button').click();
     return this;
+  }
+
+  //     And Clicks on Trash Icon
+  clicksOnMenu() {
+    cy.get('[aria-label="Show menu"]').click();
+  }
+  clicksOnArchivedItems() {
+    cy.contains('Archived items').click();
+  }
+  clicksOnSwitchToLists() {
+    cy.contains('Switch to lists').click();
+  }
+  clicksOnTrashIcon() {
+    cy.findByTestId('TrashIcon').click();
+  }
+  clickOnDeleteButton() {
+    cy.contains('button', 'Delete').click();
   }
 }
 

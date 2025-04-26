@@ -10,7 +10,6 @@ const updateTemplateNameAction = new UpdateTemplateNameActions();
 const updateTemplateNameAssertion = new UpdateTemplateNameAssertions();
 const sharedAction = new SharedActions();
 const boardName = 'My Board';
-const listName = 'My List';
 const templateName = 'My Template';
 const updatedName = 'My NEW Template';
 let boardUrl;
@@ -21,8 +20,8 @@ before(() => {
   shardDataUtils.createBoard(boardName).then((res) => {
     boardUrl = res.body.url;
     boardId = res.body.id;
-    shardDataUtils.createList(boardId, listName).then((res) => {
-      listId = res.body.id;
+    shardDataUtils.getList(boardId).then((res) => {
+      listId = res.body[0].id;
       shardDataUtils.createCardTemplate(listId, templateName);
     });
   });

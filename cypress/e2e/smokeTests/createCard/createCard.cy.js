@@ -2,12 +2,13 @@
 import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
 import CreateCardActions from '../../../pageObjects/createCard/actions.cy';
 import ShardDataUtils from '../../../pageObjects/shared/dataUtils.cy';
+import createCardAssertions from '../../../pageObjects/createCard/assertions.cy';
 
 const createCardAction = new CreateCardActions();
+const createCardAssertion = new createCardAssertions();
 const shardDataUtils = new ShardDataUtils();
 const cardName = 'My card';
 const boardName = 'My Board';
-const listName = 'My List';
 let boardUrl;
 let boardId;
 
@@ -15,7 +16,6 @@ before(() => {
   shardDataUtils.createBoard(boardName).then((res) => {
     boardUrl = res.body.url;
     boardId = res.body.id;
-    shardDataUtils.createList(boardId, listName);
   });
   cy.login();
 });
@@ -33,7 +33,9 @@ When('Types card title in textarea field', () => {
 When('Clicks on Add card button', () => {
   createCardAction.clicksOnAddCardButton();
 });
-Then('The card will be created successfully', () => {});
+Then('The card will be created successfully', () => {
+  createCardAssertion.checkListIsContainCard(cardName);
+});
 
 after(() => {
   shardDataUtils.deleteBoard(boardId);

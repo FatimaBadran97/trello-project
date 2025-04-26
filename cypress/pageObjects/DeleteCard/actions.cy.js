@@ -4,6 +4,7 @@ class DeleteCardActions {
     return this;
   }
   clickOnArchiveLink() {
+    cy.wait(1500);
     cy.contains('Archive').click();
     return this;
   }
@@ -14,7 +15,7 @@ class DeleteCardActions {
   }
   clickOnDeleteButton() {
     cy.wait(1500);
-    cy.get('.nch-button--danger').click();
+    cy.findByTestId('popover-confirm-button').click();
     return this;
   }
 }

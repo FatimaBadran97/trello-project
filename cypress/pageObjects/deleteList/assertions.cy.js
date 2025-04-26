@@ -1,9 +1,7 @@
 class DeleteListAssertions {
   checkListInArchivedItems(listName) {
-    cy.get('[aria-label="Show menu"]').click();
-    cy.get('.js-open-archive').click();
-    cy.contains('Switch to lists').click();
-    cy.get('.archive-list').find('.item-name').should('contain', listName);
+    cy.contains(listName).should('not.exist');
+    cy.findByTestId('popover-close').click();
   }
 }
 export default DeleteListAssertions;

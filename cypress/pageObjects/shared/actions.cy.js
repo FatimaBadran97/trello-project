@@ -19,7 +19,8 @@ class SharedActions {
     cy.wait(2000);
     cy.get('[aria-label="Show menu"]').click();
     cy.contains('Close board').click();
-    cy.findByTestId('close-board-confirm-button').click();
+    cy.findByTestId('popover-close-board-confirm').click();
+    cy.get('[aria-label="Show menu"]').click();
     cy.findByTestId('close-board-delete-board-button').click();
     cy.findByTestId('close-board-delete-board-confirm-button').click();
   }
@@ -31,6 +32,13 @@ class SharedActions {
   closeCardModule() {
     cy.findByTestId('CloseIcon').first().click();
   }
+  randomNumber(max) {
+    //random number except 0
+    const random = Math.floor(Math.random() * max);
+    if (random == 0) {
+      return 1;
+    }
+    return random;
+  }
 }
-
 export default SharedActions;

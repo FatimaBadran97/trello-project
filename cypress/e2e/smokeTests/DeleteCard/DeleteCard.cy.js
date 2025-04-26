@@ -10,7 +10,6 @@ const deleteCardAction = new DeleteCardActions();
 const deleteCardAssertion = new DeleteCardAssertions();
 const sharedAction = new SharedActions();
 const boardName = 'My Board';
-const listName = 'My List';
 const cardName = 'My card';
 let boardUrl;
 let boardId;
@@ -20,9 +19,9 @@ before(() => {
   dataUtils.createBoard(boardName).then((res) => {
     boardUrl = res.body.url;
     boardId = res.body.id;
-    dataUtils.createList(boardId, listName).then((res) => {
-      //   cy.log(res);
-      listId = res.body.id;
+    dataUtils.getList(boardId).then((res) => {
+      // cy.log(res);
+      listId = res.body[0].id;
       dataUtils.createCard(listId, cardName);
     });
   });

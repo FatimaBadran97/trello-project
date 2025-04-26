@@ -8,7 +8,6 @@ class MoveTemplateAssertions {
     return this;
   }
 
-  // templateId is not equal when moveing it to another template????????
   checkTheDestinationList(destinationListId, templateName) {
     cy.get(`[data-list-id = ${destinationListId}]`)
       .find('li')

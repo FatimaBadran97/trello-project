@@ -13,6 +13,12 @@ class ShardDataUtils {
       `https://api.trello.com/1/boards/${boardId}/lists?name=${listName}&key=${APIKey}&token=${APIToken}`
     );
   };
+  getList = (boardId) => {
+    return cy.request(
+      'GET',
+      `https://api.trello.com/1/boards/${boardId}/lists?key=${APIKey}&token=${APIToken}`
+    );
+  };
   deleteBoard = (boardId) => {
     return cy.request(
       'DELETE',

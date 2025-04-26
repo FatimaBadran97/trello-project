@@ -14,10 +14,11 @@ class CreateCardTemplateAssertions {
     sharedAssertions.checkCardOrTemplateTitleInModule(templateName);
     return this;
   }
-  checkTemplateLinkHaveGreenCheckInPopUp() {
-    cy.get('[title="Convert this template back to a normal card."]')
-      .find('.icon-check.light')
-      .should('exist');
+  checkTemplateLinkInPopUp() {
+    cy.findByTestId('card-back-make-template-button').should(
+      'contain',
+      'Template'
+    );
     return this;
   }
   checkTemplateBadgeInCard() {

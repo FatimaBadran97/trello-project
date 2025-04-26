@@ -1,6 +1,6 @@
 class SharedAssertions {
   checkCardOrTemplateTitleInModule(title) {
-    cy.get('.js-card-detail-title-input').should('have.value', title);
+    cy.findByTestId('card-back-title-input').should('have.value', title);
   }
 
   checkCardOrTemplateAbsence(listId, cardOrTemplateId) {

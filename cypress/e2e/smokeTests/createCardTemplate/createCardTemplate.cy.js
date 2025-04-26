@@ -42,7 +42,7 @@ Then('The template will be created successfully', () => {
   createCardTemplateAssertion
     .checkPopUpTitle()
     .checkTemplateTitleInPopUp(templateName)
-    .checkTemplateLinkHaveGreenCheckInPopUp()
+    .checkTemplateLinkInPopUp()
     .checkTemplateBadgeInCard();
 });
 

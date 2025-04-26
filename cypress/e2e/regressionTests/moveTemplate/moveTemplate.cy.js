@@ -11,23 +11,23 @@ const moveTemplateAssertion = new MoveTemplateAssertions();
 const sharedAction = new SharedActions();
 
 const boardName = 'My Board';
-const listName = 'My List';
 const templateName = 'My Template';
-const destinationListName = 'My Destination List';
 let boardUrl;
 let boardId;
 let listId;
 let templateId;
+let destinationListName;
 let destinationListId;
+let destinationIndex;
 before(() => {
   shardDataUtils.createBoard(boardName).then((res) => {
     boardUrl = res.body.url;
     boardId = res.body.id;
-    shardDataUtils.createList(boardId, destinationListName).then((res) => {
-      destinationListId = res.body.id;
-    });
-    shardDataUtils.createList(boardId, listName).then((res) => {
-      listId = res.body.id;
+    shardDataUtils.getList(boardId).then((res) => {
+      listId = res.body[0].id;
+      destinationIndex = sharedAction.randomNumber(res.body.length);
+      destinationListName = res.body[destinationIndex].name;
+      destinationListId = res.body[destinationIndex].id;
       shardDataUtils.createCardTemplate(listId, templateName).then((res) => {
         templateId = res.body.id;
       });
@@ -47,7 +47,7 @@ When('Clicks on Move button', () => {
   moveTemplateAction.clicksOnMoveButton();
 });
 When('Chooses the list to move to', () => {
-  moveTemplateAction.choosesTheList(destinationListId);
+  moveTemplateAction.typeTheList(destinationListName + '{enter}');
 });
 When('Clicks on Move submit input', () => {
   moveTemplateAction.clicksOnMoveSubmitInput();

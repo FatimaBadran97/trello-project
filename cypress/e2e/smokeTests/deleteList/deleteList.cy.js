@@ -22,13 +22,26 @@ When('The user clicks on List actions button', () => {
 When('Chooses Archive this list option', () => {
   deleteListActions.chooseArchiveThisListOption();
 });
-Then('The list will be archived successfully.', () => {
+When('Clicks on menu', () => {
+  deleteListActions.clicksOnMenu();
+});
+When('Clicks on Archived items', () => {
+  deleteListActions.clicksOnArchivedItems();
+});
+When('Clicks on Switch to lists', () => {
+  deleteListActions.clicksOnSwitchToLists();
+});
+When('Clicks on Trash Icon', () => {
+  deleteListActions.clicksOnTrashIcon();
+});
+When('Clicks on Delete button', () => {
+  deleteListActions.clickOnDeleteButton();
+});
+Then('The list will be deleted successfully.', () => {
   deleteListAssertions.checkListInArchivedItems(listName);
 });
 
 after(() => {
   cy.wait(2000);
-  cy.get('[title="Go back."]').click();
-  cy.get('[title="Close the board menu."]').click();
   sherdActions.deleteCurrentBoard();
 });

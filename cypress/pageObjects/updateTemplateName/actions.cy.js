@@ -4,7 +4,7 @@ class UpdateTemplateNameActions {
     return this;
   }
   typesTheNewNameInTextareaField(updatedName) {
-    cy.get('.js-card-detail-title-input')
+    cy.findByTestId('card-back-title-input')
       .focus()
       .clear()
       .type(updatedName + '{enter}');

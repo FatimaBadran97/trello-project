@@ -9,8 +9,8 @@ class MoveTemplateActions {
     return this;
   }
 
-  choosesTheList(destinationListName) {
-    cy.findByTestId('move-card-popover-select-list-destination').select(
+  typeTheList(destinationListName) {
+    cy.findByTestId('move-card-popover-select-list-destination').type(
       destinationListName
     );
     return this;
